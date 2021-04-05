@@ -17,7 +17,7 @@ class DynamicArray
             memcpy(tmp_array, array, element_count * sizeof array);
             delete[] array;
             array = tmp_array;
-            // std::cout << "Array Grow to " << size << std::endl; // For test the code
+            std::cout << "Array Grow to " << size << std::endl; // For test the code
 
         }
         void shrink_array()
