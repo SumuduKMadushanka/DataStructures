@@ -31,7 +31,7 @@ if "%latest_file%"=="cyclic_array.cpp" (
     GOTO :Compile_cyclic_array
 ) else (
     echo cyclic_array.o already compiled
-    GOTO :Link_Obj_Files
+    GOTO :Main
 )
 
 :Compile_cyclic_array
@@ -39,6 +39,33 @@ echo Compiling cyclic_array.cpp...
 g++ -c ./cyclic_array.cpp -o ./object_files/cyclic_array.o -std=c++11
 set /a modified=1
 echo Compiling cyclic_array.cpp Completed
+
+:: Compile the "main.cpp"
+:Main
+if exist .\object_files\main.o (
+    GOTO :Has_main_o
+) else (
+    GOTO :Compile_main
+)
+
+:Has_main_o
+copy .\main.cpp .\temp_compile
+copy .\object_files\main.o .\temp_compile
+cd .\temp_compile
+for /f %%i in ('dir /b /o:d main.o main.cpp') do set latest_file=%%i
+cd ..
+if "%latest_file%"=="main.cpp" (
+    GOTO :Compile_main
+) else (
+    echo main.o already compiled
+    GOTO :Link_Obj_Files
+)
+
+:Compile_main
+echo Compiling main.cpp...
+g++ -c ./main.cpp -o ./object_files/main.o -std=c++11
+set /a modified=1
+echo Compiling main.cpp Completed
 
 :: Link the object files
 :Link_Obj_Files

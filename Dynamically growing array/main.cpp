@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstring>
 #include "dynamic_array.h"
 #include "dynamic_array.cpp"
 

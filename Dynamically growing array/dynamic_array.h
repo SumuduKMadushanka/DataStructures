@@ -2,6 +2,7 @@
 #define DYNAMIC_ARRAY
 
 #include <iostream>
+#include <cstring>
 
 template <class T>
 class DynamicArray
