@@ -1,6 +1,17 @@
 :: Binary Tree with Template compile file
 @echo OFF
 
+if "%~1"=="clear" (
+    if exist .\object_files\ (
+        rmdir /s /q .\object_files
+    )
+    if exist .\BinaryTreeTemplateDemo.exe (
+        del .\BinaryTreeTemplateDemo.exe
+    )
+    echo Clear all Completed
+    GOTO :END
+)
+
 :: Compile the cpp files
 echo Start compile cpp files...
 mkdir temp_compile
@@ -111,3 +122,5 @@ echo Completed the linking objects
 echo Completed the compilation
 echo Binary Tree with Template compilation successfull
 rmdir /s /q .\temp_compile
+
+:END
