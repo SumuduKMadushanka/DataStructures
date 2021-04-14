@@ -1,4 +1,4 @@
-:: Binary Tree with Template run file
+:: Single Linked List run file
 @echo OFF
 
 .\SingleLinkedListDemo
